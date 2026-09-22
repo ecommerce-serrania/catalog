@@ -1,0 +1,16 @@
+Imagenes que van directamente en esta carpeta:
+
+  logo.png          Logo del menu. PNG transparente, alto 68 px, color oscuro.
+  hero.jpg          Fondo del hero en computador. 1920x1080, max 300 KB.
+  hero-movil.jpg    Foto del hero en celular. 900x1200 vertical, max 200 KB.
+                    En celular la foto va ARRIBA y el texto debajo sobre el azul.
+  video.mp4         Video de proyectos. Max 3 MB, sin audio o con subtitulos.
+                    Arranca solo y en silencio; se puede pausar y activar sonido.
+  video-portada.webp  Primer cuadro del video, 1280x720.
+
+Subcarpetas:
+  productos/    93 fotos    cyclone-1.webp, cyclone-2.webp, cyclone-3.webp...
+  marcas/       48 logos    porsche.png, bbva.png...  (PNG transparente)
+  tallas/       guias       cyclone-u.webp, business-h.webp...
+  estampados/   7 fotos     bordado.webp, sublimacion.webp...
+  empaque/      2 fotos     cintillo.webp, bolsa-de-tela.webp
