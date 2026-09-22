@@ -1,0 +1,41 @@
+SITIO COMPLETO — ESPAÑOL + INGLÉS (todo menos la carpeta img)
+=============================================================
+
+QUÉ CAMBIÓ EN ESTA ENTREGA
+  · Versión en inglés completa, en la carpeta "en".
+  · Botón ES / EN en la cabecera de las dos versiones.
+  · Direcciones internas actualizadas a https://catalogo.serrania.co
+    (canónica, compartir en redes, sitemap y robots).
+  · sitemap.xml ahora incluye las URL en español y en inglés.
+
+QUÉ SUBIR A GITHUB
+  1. Los archivos sueltos de la raíz: index.html, producto.html,
+     robots.txt, sitemap.xml, README.md
+  2. La carpeta css completa
+  3. La carpeta js completa
+  4. La carpeta en completa  (es nueva)
+
+  No subas este LEEME.txt.
+
+LAS IMÁGENES NO SE TOCAN
+  La versión en inglés usa exactamente las mismas fotos que la española:
+  las busca en ../img/. No hay que subir ninguna imagen nueva ni duplicada.
+
+DIRECCIONES
+  Español:  https://catalogo.serrania.co
+  Inglés:   https://catalogo.serrania.co/en/
+
+CONTACTO EN CADA VERSIÓN
+  Español: WhatsApp 573160544381 · gerenciacomercial@serrania.co
+  Inglés:  WhatsApp 19546380114  · journey@serrania.co
+  (se editan en js/config.js y en en/js/config.js)
+
+MEDIDAS
+  Las tablas en inglés muestran pulgadas y, entre paréntesis, los
+  centímetros: 21.7 in (55 cm). No hay que duplicar ningún dato:
+  la conversión la hace el sitio sola.
+
+CÓMO EDITAR DESPUÉS
+  Los textos de producto en inglés están en en/js/datos-productos.js
+  Los colores en en/js/datos-colores.js y las tallas en en/js/datos-tallas.js
+  Si agregas una prenda nueva, hay que agregarla en los dos idiomas.

@@ -1,0 +1,1518 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   SERRANÍA — Catálogo de prendas corporativas
+   Paleta y tipografía derivadas de la identidad de marca.
+   ========================================================================== */
+
+:root{
+  --tinta:      #0B3A47;   /* azul petróleo del logo */
+  --tinta-alta: #0F4E5E;
+  --texto:      #14262C;
+  --suave:      #5F757C;
+  --linea:      #DCE4E6;
+  --niebla:     #F3F6F6;
+  --papel:      #FFFFFF;
+  --acento:     #C08A2E;   /* dorado, uso mínimo */
+  --whatsapp:   #1FA855;
+
+  --radio:   4px;
+  --radio-g: 8px;
+  --ancho:   1240px;
+
+  --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --display: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+
+  --sombra: 0 1px 2px rgba(11,58,71,.06), 0 8px 24px rgba(11,58,71,.06);
+
+  /* SOMBRA DE LOS TEXTOS DEL BANNER PRINCIPAL
+     Para más sombra, sube los números después de rgba(0,0,0, …)
+     (van de 0 a 1; .60 es más oscuro que .40).
+     Para menos, bájalos. */
+  --sombra-texto-banner: 0 1px 3px rgba(0,0,0,.40), 0 3px 16px rgba(0,0,0,.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* El encabezado queda fijo arriba; sin este margen, al saltar a una sección
+   su título quedaba escondido detrás de la barra */
+html { scroll-behavior: smooth; scroll-padding-top: 78px; }
+@media (prefers-reduced-motion: reduce){
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+body{
+  margin:0;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--papel);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width:100%; display:block; }
+a   { color: inherit; text-decoration: none; }
+
+:focus-visible{
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+.contenedor{ width:100%; max-width: var(--ancho); margin:0 auto; padding:0 20px; }
+
+.oculto{ display:none !important; }
+
+.solo-lectores{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap;
+}
+
+/* ---------- Tipografía de títulos ---------- */
+.display{
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+  margin: 0;
+  -webkit-text-stroke: 0;
+}
+h1.display{ font-size: clamp(1.9rem, 5.2vw, 3.3rem); }
+h2.display{ font-size: clamp(1.4rem, 3.1vw, 2.05rem); }
+h3.display{ font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
+
+/* Texto corrido: regular; la palabra clave en negrilla y en azul de marca */
+p{ font-weight: 400; }
+p strong, li strong{ font-weight: 700; color: var(--tinta); }
+
+.rotulo{
+  font-size:.7rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:.18em; color: var(--suave); margin:0 0 10px;
+}
+
+/* ==========================================================================
+   ENCABEZADO
+   ========================================================================== */
+.cabecera{
+  position: sticky; top:0; z-index: 60;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+}
+.cabecera-fila{
+  display:flex; align-items:center; gap:16px;
+  height: 68px;
+}
+.logo{ display:flex; align-items:center; gap:9px; flex:0 0 auto; }
+.logo svg{ width:30px; height:auto; }
+/* Logo en imagen. Ajusta la altura si tu PNG se ve muy grande o muy pequeño. */
+.logo img{ height:34px; width:auto; }
+.logo-texto{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:1.35rem; color: var(--tinta); letter-spacing:.01em;
+}
+
+.nav{ margin-left:auto; display:flex; align-items:center; gap:4px; }
+.nav a{
+  padding:9px 12px; border-radius: var(--radio);
+  font-size:.9rem; color: var(--texto);
+}
+.nav a:hover{ background: var(--niebla); }
+.nav a.activo{ color: var(--tinta); font-weight:700; box-shadow: inset 0 -2px 0 var(--tinta); border-radius:0; }
+
+.acciones{ display:flex; align-items:center; gap:8px; margin-left:12px; }
+
+.btn-icono{
+  width:42px; height:42px; display:grid; place-items:center;
+  border:1px solid var(--linea); border-radius: var(--radio);
+  background: var(--papel); cursor:pointer; color: var(--tinta);
+}
+.btn-icono:hover{ background: var(--niebla); }
+.btn-menu{ display:none; }
+
+/* Buscador */
+.buscador{ position:relative; flex:1 1 260px; max-width:340px; }
+.buscador input{
+  width:100%; height:42px; padding:0 14px 0 38px;
+  border:1px solid var(--linea); border-radius: var(--radio);
+  font-family:inherit; font-size:.9rem; background: var(--niebla); color:var(--texto);
+}
+.buscador input:focus{ background: var(--papel); border-color: var(--tinta); outline:none; }
+.buscador svg{ position:absolute; left:12px; top:12px; width:18px; height:18px; color: var(--suave); }
+
+.sugerencias{
+  position:absolute; top:48px; left:0; right:0; z-index:80;
+  background: var(--papel); border:1px solid var(--linea);
+  border-radius: var(--radio-g); box-shadow: var(--sombra);
+  max-height:340px; overflow:auto;
+}
+.sugerencias a{ display:block; padding:11px 14px; border-bottom:1px solid var(--niebla); font-size:.9rem; }
+.sugerencias a:last-child{ border-bottom:0; }
+.sugerencias a:hover, .sugerencias a:focus{ background: var(--niebla); }
+.sugerencias span{ display:block; font-size:.75rem; color: var(--suave); }
+.sugerencias .vacio{ padding:16px 14px; font-size:.9rem; color: var(--suave); }
+
+
+/* ==========================================================================
+   PORTADA (HERO)
+   La foto va completa, sin recortes y sin degradados: el alto del banner
+   lo define la propia imagen. El texto va encima, arriba a la derecha.
+   Computador: img/hero.jpg  ·  Celular: img/hero-movil.jpg
+   ========================================================================== */
+.portada{ background: var(--tinta); color:#fff; }
+
+.portada-marco{
+  display: grid;                 /* foto y texto comparten la misma celda */
+  position: relative;
+  background: var(--tinta);      /* color de respaldo si falta la foto */
+}
+.portada-fondo,
+.portada-capa{ grid-area: 1 / 1; }
+
+.portada-fondo{ display:block; min-height: 420px; }
+.portada-fondo img{
+  width: 100%; height: 100%;
+  object-fit: cover;             /* solo actúa si el texto es más alto que la foto */
+  display: block;
+}
+
+.portada-capa{
+  position: relative; z-index: 1;
+  display: flex; align-items: flex-start;
+  padding: clamp(40px, 6vw, 88px) 0 clamp(32px, 4vw, 56px);
+}
+.portada-texto{
+  display: flex; flex-direction: column; align-items: flex-start;
+  text-align: left;
+}
+
+/* Sombra en las letras para que se lean sobre la foto (sin capa oscura) */
+.portada h1,
+.portada .rotulo,
+.portada-gancho,
+.portada-texto p{ text-shadow: var(--sombra-texto-banner); }
+
+.portada .rotulo{ color:#fff; margin-bottom: 14px; }
+
+.portada h1{
+  font-family: "Montserrat", var(--sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  max-width: none;
+  color:#fff;
+}
+.portada-gancho{
+  font-family: "Montserrat", var(--sans);
+  font-size: clamp(1rem, 1.9vw, 1.45rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: 1.25;
+  max-width: 30ch;
+  margin: 18px 0 10px;
+  color:#fff;
+}
+.portada-texto p:not(.rotulo):not(.portada-gancho){
+  max-width: 44ch; margin: 0 0 24px;
+  font-size: clamp(.95rem, 1.3vw, 1.08rem);
+  color:#fff;
+}
+.portada-botones{ display:flex; flex-wrap:wrap; gap:12px; justify-content:flex-start; }
+/* Sobre la foto las palabras clave van en blanco, no en azul */
+.portada-texto p strong{ color:#fff; }
+
+/* Botón principal al estilo de la referencia: sólido con filo dorado */
+.portada .btn-claro{
+  background: var(--tinta); color:#fff;
+  border: 0; border-right: 6px solid var(--acento);
+  font-family: "Montserrat", var(--sans);
+  text-transform: uppercase; letter-spacing: .02em;
+  box-shadow: 0 6px 18px rgba(0,0,0,.28);
+}
+.portada .btn-claro:hover{ background: var(--tinta-alta); }
+.portada .btn-linea-claro{
+  border-color: rgba(255,255,255,.85); color:#fff;
+  background: rgba(0,0,0,.18);
+}
+
+/* Cifras: franja propia debajo de la foto, para no tapar la imagen */
+.portada-cifras{ background: var(--tinta); padding: 26px 0; }
+.cifras{ display:flex; flex-wrap:wrap; gap:36px; justify-content:center; }
+.cifra{ text-align:center; }
+.cifra strong{
+  display:block; font-family:var(--display);
+  font-size:2.2rem; font-weight:700; line-height:1; color:#fff;
+}
+.cifra span{ font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.7); }
+
+/* ---------- Celular: como la referencia, texto arriba a la derecha ---------- */
+@media (max-width: 759px){
+  .portada-fondo{ min-height: 0; }
+  .portada-capa{ padding: 26px 0 20px; }
+  .portada-texto{ align-items: flex-end; text-align: right; }
+  .portada-botones{ justify-content: flex-end; }
+
+  .portada .rotulo{ font-size: .6rem; margin-bottom: 6px; }
+  .portada h1{ font-size: clamp(1.55rem, 7.4vw, 2.3rem); line-height: 1.04; }
+  .portada-gancho{
+    font-size: clamp(.68rem, 3.1vw, .85rem);
+    line-height: 1.3; max-width: 32ch;
+    margin: 8px 0 12px;
+  }
+  .portada .btn-claro{
+    padding: 8px 14px; font-size: .74rem;
+    border-right-width: 5px;
+  }
+  /* En celular solo título, frase y "Ver el catálogo".
+     El asesor sigue disponible en el botón flotante de WhatsApp. */
+  .portada-texto p:not(.rotulo):not(.portada-gancho),
+  .portada .btn-linea-claro{ display:none; }
+
+  .portada-cifras{ padding: 18px 0; }
+  .cifras{
+    display:grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px; align-items: start;
+  }
+  .cifra{ display:flex; flex-direction:column; align-items:center; }
+  .cifra strong{
+    font-size: clamp(1.1rem, 5.2vw, 1.5rem);
+    white-space: nowrap; margin-bottom: 5px;
+  }
+  .cifra span{
+    display:block; font-size: .55rem; letter-spacing: .05em;
+    line-height: 1.25; text-wrap: balance;
+  }
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding: 13px 24px; border:1px solid transparent; border-radius: var(--radio);
+  font-family:inherit; font-size:.94rem; font-weight:700; cursor:pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+  text-align:center;
+}
+.btn svg{ width:19px; height:19px; flex:none; }
+
+.btn-primario{ background: var(--whatsapp); color:#fff; }
+.btn-primario:hover{ background:#188744; }
+
+.btn-oscuro{ background: var(--tinta); color:#fff; }
+.btn-oscuro:hover{ background: var(--tinta-alta); }
+
+.btn-claro{ background:#fff; color: var(--tinta); }
+.btn-claro:hover{ background: var(--niebla); }
+
+.btn-linea{ background:transparent; border-color: var(--linea); color: var(--texto); }
+.btn-linea:hover{ border-color: var(--tinta); color: var(--tinta); }
+
+.btn-linea-claro{ background:transparent; border-color: rgba(255,255,255,.42); color:#fff; }
+.btn-linea-claro:hover{ background: rgba(255,255,255,.12); }
+
+.btn-bloque{ width:100%; }
+.btn-chico{ padding:9px 15px; font-size:.85rem; }
+
+/* ==========================================================================
+   SECCIONES Y FILTROS
+   ========================================================================== */
+.seccion{ padding: clamp(44px, 6vw, 68px) 0; }
+.seccion-niebla{ background: var(--niebla); }
+
+.seccion-cabeza{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:20px; flex-wrap:wrap; margin-bottom:28px;
+}
+
+/* Barra de filtros */
+.filtros{
+  position: sticky; top: 68px; z-index: 40;
+  background: var(--papel); border-bottom:1px solid var(--linea);
+  padding:14px 0;
+}
+.filtros-fila{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.filtros-grupo{ display:flex; gap:7px; flex-wrap:wrap; align-items:center; }
+.filtros-etiqueta{
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.12em;
+  color: var(--suave); font-weight:700; margin-right:2px;
+}
+
+.pastilla{
+  padding:7px 14px; border:1px solid var(--linea); border-radius:100px;
+  background: var(--papel); font-family:inherit; font-size:.85rem;
+  color: var(--texto); cursor:pointer; white-space:nowrap;
+}
+.pastilla:hover{ border-color: var(--tinta); }
+.pastilla[aria-pressed="true"]{ background: var(--tinta); border-color: var(--tinta); color:#fff; }
+
+.conteo{ margin-left:auto; font-size:.85rem; color: var(--suave); }
+
+/* ==========================================================================
+   REJILLA DE PRODUCTOS
+   ========================================================================== */
+.rejilla{
+  display:grid; gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.tarjeta{
+  background: var(--papel);
+  border:1px solid var(--linea); border-radius: var(--radio-g);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.tarjeta:hover{ box-shadow: var(--sombra); transform: translateY(-2px); }
+
+.tarjeta-foto{
+  position:relative; aspect-ratio: 4/5; background: var(--niebla); overflow:hidden;
+}
+.tarjeta-foto img{ width:100%; height:100%; object-fit:cover; }
+.tarjeta-foto .marcador{
+  position:absolute; top:10px; left:10px;
+  background: rgba(11,58,71,.9); color:#fff;
+  font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em;
+  padding:5px 9px; border-radius:3px;
+}
+
+.tarjeta-cuerpo{ padding:16px 16px 18px; display:flex; flex-direction:column; flex:1; gap:8px; }
+.tarjeta-categoria{
+  font-size:.68rem; text-transform:uppercase; letter-spacing:.14em; color: var(--suave); font-weight:700;
+}
+.tarjeta h3{
+  font-family: var(--display);
+  font-size:1.14rem; margin:0; font-weight:600; color: var(--tinta);
+  letter-spacing:-.01em; line-height:1.25;
+}
+.tarjeta p{ margin:0; font-size:.86rem; color: var(--suave); line-height:1.5; }
+
+.tarjeta-colores{ display:flex; gap:4px; align-items:center; margin-top:2px; }
+.punto{ width:13px; height:13px; border-radius:50%; border:1px solid rgba(0,0,0,.14); }
+.punto-mas{ font-size:.7rem; color: var(--suave); margin-left:3px; }
+
+.tarjeta-pie{ margin-top:auto; padding-top:12px; display:flex; gap:8px; }
+.tarjeta-pie .btn{ flex:1; }
+
+/* Marcador de placeholder cuando falta la foto */
+.sin-foto{
+  width:100%; height:100%; display:grid; place-items:center;
+  background: repeating-linear-gradient(45deg, #EDF1F2 0 12px, #F5F8F8 12px 24px);
+  color: var(--suave); font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; text-align:center; padding:12px;
+}
+
+.vacio-resultado{
+  grid-column:1/-1; text-align:center; padding:60px 20px; color: var(--suave);
+}
+.vacio-resultado h3{ color: var(--texto); margin:0 0 8px; }
+
+/* ==========================================================================
+   FICHA DE PRODUCTO
+   ========================================================================== */
+.migas{ padding:18px 0; font-size:.83rem; color: var(--suave); }
+.migas a:hover{ color: var(--tinta); text-decoration:underline; }
+.migas span{ margin:0 7px; opacity:.5; }
+
+.ficha{
+  display:grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr);
+  gap: clamp(28px, 4vw, 56px); padding-bottom: 56px; align-items:start;
+}
+
+/* --- Carrusel --- */
+.carrusel{ position: sticky; top: 92px; }
+.carrusel-marco{
+  position:relative; aspect-ratio:4/5; background: var(--niebla);
+  border-radius: var(--radio-g); overflow:hidden; border:1px solid var(--linea);
+}
+.carrusel-pista{ display:flex; height:100%; transition: transform .32s ease; }
+.carrusel-pista > *{ min-width:100%; height:100%; }
+.carrusel-pista img{ width:100%; height:100%; object-fit:cover; }
+
+.carrusel-flecha{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:40px; height:40px; border-radius:50%; border:0;
+  background: rgba(255,255,255,.94); color: var(--tinta);
+  display:grid; place-items:center; cursor:pointer; box-shadow: var(--sombra);
+}
+.carrusel-flecha:hover{ background:#fff; }
+.carrusel-flecha[disabled]{ opacity:.3; cursor:default; }
+.flecha-izq{ left:12px; } .flecha-der{ right:12px; }
+
+.carrusel-puntos{ display:flex; gap:7px; justify-content:center; margin-top:12px; }
+.carrusel-puntos button{
+  width:8px; height:8px; border-radius:50%; border:0; padding:0;
+  background: var(--linea); cursor:pointer;
+}
+.carrusel-puntos button[aria-current="true"]{ background: var(--tinta); width:22px; border-radius:4px; }
+
+.miniaturas{ display:flex; gap:9px; margin-top:12px; }
+.miniaturas button{
+  flex:1; aspect-ratio:1; border:1px solid var(--linea); border-radius: var(--radio);
+  overflow:hidden; padding:0; background: var(--niebla); cursor:pointer;
+}
+.miniaturas button[aria-current="true"]{ border-color: var(--tinta); border-width:2px; }
+.miniaturas img{ width:100%; height:100%; object-fit:cover; }
+
+/* --- Panel de información --- */
+.ficha-info > * + *{ margin-top:22px; }
+.ficha-info h1{ color: var(--tinta); }
+.ficha-resumen{ font-size:1.05rem; color: var(--suave); margin-top:12px; }
+
+.claves{ list-style:none; padding:0; margin:0; display:grid; gap:9px; }
+.claves li{ position:relative; padding-left:24px; font-size:.94rem; }
+.claves li::before{
+  content:""; position:absolute; left:0; top:.55em;
+  width:9px; height:2px; background: var(--acento);
+}
+
+.bloque{ border-top:1px solid var(--linea); padding-top:22px; }
+.bloque h2{
+  font-size:.76rem; text-transform:uppercase; letter-spacing:.14em;
+  color: var(--suave); margin:0 0 14px; font-weight:700;
+}
+
+/* Colores */
+.paleta{ display:flex; flex-wrap:wrap; gap:9px; }
+.muestra{
+  width:30px; height:30px; border-radius:50%;
+  border:1px solid rgba(0,0,0,.16); cursor:help;
+}
+.paleta-nota{ font-size:.8rem; color: var(--suave); margin:12px 0 0; }
+
+/* Técnicas */
+.tecnicas{ display:flex; flex-wrap:wrap; gap:8px; }
+.tecnica{
+  border:1px solid var(--linea); border-radius: var(--radio);
+  padding:8px 13px; font-size:.85rem;
+}
+.tecnica strong{ display:block; font-size:.88rem; color: var(--tinta); }
+.tecnica span{ font-size:.75rem; color: var(--suave); }
+
+/* Datos rápidos */
+.datos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; }
+.dato span{ display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.11em; color: var(--suave); }
+.dato strong{ font-size:.98rem; color: var(--texto); font-weight:700; }
+
+/* Acciones */
+.acciones-ficha{ display:grid; gap:10px; }
+
+/* ==========================================================================
+   TABLA DE TALLAS
+   ========================================================================== */
+.tallas-pestanas{ display:flex; gap:6px; margin-bottom:14px; }
+.tallas-pestanas button{
+  padding:8px 16px; border:1px solid var(--linea); border-radius: var(--radio);
+  background: var(--papel); font-family:inherit; font-size:.86rem; cursor:pointer;
+}
+.tallas-pestanas button[aria-selected="true"]{ background: var(--tinta); color:#fff; border-color: var(--tinta); }
+
+.tallas-caja{ display:grid; grid-template-columns: 130px 1fr; gap:20px; align-items:start; }
+.tallas-esquema{
+  background: var(--niebla); border-radius: var(--radio); padding:10px;
+}
+.tallas-esquema svg{ width:100%; height:auto; }
+
+.tabla-envoltura{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+table.tallas{ width:100%; border-collapse:collapse; font-size:.88rem; min-width:300px; }
+table.tallas th, table.tallas td{
+  padding:9px 10px; text-align:center; border-bottom:1px solid var(--linea);
+}
+table.tallas thead th{
+  background: var(--tinta); color:#fff; font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.08em; border-bottom:0;
+}
+table.tallas thead th:first-child{ border-top-left-radius: var(--radio); }
+table.tallas thead th:last-child{ border-top-right-radius: var(--radio); }
+table.tallas tbody th{ background: var(--niebla); font-weight:700; }
+table.tallas tbody tr:hover td{ background: #FAFCFC; }
+
+.tallas-ayuda{ margin-top:16px; font-size:.82rem; color: var(--suave); }
+.tallas-ayuda ol{ margin:0 0 10px; padding-left:18px; }
+.tallas-ayuda li{ margin-bottom:4px; }
+.tallas-nota{
+  background: var(--niebla); border-left:3px solid var(--acento);
+  padding:10px 13px; border-radius:0 var(--radio) var(--radio) 0;
+  font-size:.82rem; color: var(--texto);
+}
+.tallas-aviso{
+  background:#FFF8E8; border-left:3px solid var(--acento);
+  padding:10px 13px; font-size:.82rem; margin-bottom:14px; border-radius:0 var(--radio) var(--radio) 0;
+}
+
+/* ==========================================================================
+   BANDEJA DE COTIZACIÓN  (elemento distintivo del sitio)
+   ========================================================================== */
+.bandeja{
+  position: fixed; left:0; right:0; bottom:0; z-index:70;
+  background: var(--tinta); color:#fff;
+  transform: translateY(110%); transition: transform .26s ease;
+  box-shadow: 0 -6px 28px rgba(11,58,71,.22);
+}
+.bandeja.visible{ transform: translateY(0); }
+.bandeja-fila{
+  display:flex; align-items:center; gap:16px; padding:14px 0; flex-wrap:wrap;
+}
+.bandeja-texto{ flex:1; min-width:180px; }
+.bandeja-texto strong{ display:block; font-size:.98rem; }
+.bandeja-texto span{ font-size:.82rem; color: rgba(255,255,255,.7); }
+.bandeja-items{ display:flex; gap:6px; flex-wrap:wrap; }
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  background: rgba(255,255,255,.13); border-radius:100px;
+  padding:5px 8px 5px 12px; font-size:.8rem;
+}
+.chip button{
+  background:none; border:0; color:rgba(255,255,255,.75);
+  cursor:pointer; font-size:1.05rem; line-height:1; padding:0 2px;
+}
+.chip button:hover{ color:#fff; }
+
+/* Botón flotante de WhatsApp */
+.flotante{
+  position: fixed; right:18px; bottom:18px; z-index:65;
+  width:56px; height:56px; border-radius:50%;
+  background: var(--whatsapp); color:#fff;
+  display:grid; place-items:center;
+  box-shadow: 0 6px 20px rgba(31,168,85,.4);
+  transition: transform .18s ease, bottom .26s ease;
+}
+.flotante:hover{ transform: scale(1.06); }
+.flotante svg{ width:30px; height:30px; }
+body.con-bandeja .flotante{ bottom:96px; }
+
+/* ==========================================================================
+   BLOQUES DE APOYO
+   ========================================================================== */
+/* Técnicas de marcación en portada */
+.tecnicas-rejilla{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+}
+.tecnica-tarjeta{
+  background: var(--papel); border:1px solid var(--linea);
+  border-radius: var(--radio-g); padding:20px;
+}
+.tecnica-tarjeta strong{ display:block; color: var(--tinta); margin-bottom:5px; }
+.tecnica-tarjeta p{ margin:0; font-size:.86rem; color: var(--suave); }
+
+/* Pasos del proceso */
+.pasos{ display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); counter-reset: paso; }
+.paso{ counter-increment: paso; }
+.paso::before{
+  content: counter(paso, decimal-leading-zero);
+  display:block; font-family:var(--display); font-size:1.5rem;
+  color: var(--acento); margin-bottom:8px; font-weight:700;
+}
+.paso > strong{ display:block; margin-bottom:5px; color: var(--tinta); }
+.paso p{ margin:0; font-size:.88rem; color: var(--suave); }
+
+/* Preguntas frecuentes */
+.faq details{
+  border-bottom:1px solid var(--linea); padding:16px 0;
+}
+.faq summary{
+  cursor:pointer; font-weight:700; color: var(--tinta);
+  list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center;
+}
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{ content:"+"; font-size:1.35rem; color: var(--suave); line-height:1; }
+.faq details[open] summary::after{ content:"–"; }
+.faq p{ margin:11px 0 0; color: var(--suave); font-size:.92rem; }
+
+/* Franja de cierre */
+.franja{
+  background: var(--tinta); color:#fff; text-align:center;
+  padding: clamp(44px,6vw,72px) 0;
+}
+.franja p{ max-width:48ch; margin:14px auto 26px; color: rgba(255,255,255,.82); }
+
+/* ==========================================================================
+   PIE
+   ========================================================================== */
+.pie{ background:#082E38; color: rgba(255,255,255,.7); padding:44px 0 26px; font-size:.88rem; }
+.pie-rejilla{ display:grid; gap:28px; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); }
+.pie h4{
+  color:#fff; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em; margin:0 0 12px;
+}
+.pie ul{ list-style:none; margin:0; padding:0; display:grid; gap:7px; }
+.pie a:hover{ color:#fff; text-decoration:underline; }
+.pie-abajo{
+  margin-top:32px; padding-top:18px; border-top:1px solid rgba(255,255,255,.12);
+  display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:.8rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1000px){
+  .ficha{ grid-template-columns:1fr; }
+  .carrusel{ position:static; }
+}
+
+@media (max-width: 860px){
+  .btn-menu{ display:grid; }
+
+  /* Encabezado de una sola fila: logo a la izquierda, botón a la derecha.
+     El buscador se traslada dentro del menú (lo mueve comunes.js). */
+  .cabecera-fila{
+    height: 62px; padding: 0 20px;
+    flex-wrap: nowrap; gap: 12px;
+  }
+  .acciones{ margin-left: auto; }
+
+  .nav{
+    /* 100% = justo debajo del encabezado */
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background: var(--papel); border-bottom:1px solid var(--linea);
+    flex-wrap: wrap; align-items: stretch;
+    padding: 14px 20px 18px; gap: 8px;
+    box-shadow: var(--sombra);
+  }
+  .nav.abierto{ display:flex; }
+
+  /* El buscador ocupa toda la fila superior del menú */
+  .nav .buscador{ flex: 1 1 100%; max-width: none; }
+
+  /* Las categorías en dos columnas: la mitad de alto que en lista */
+  .nav a{
+    flex: 1 1 calc(50% - 4px);
+    padding: 11px 10px;
+    border: 1px solid var(--linea); border-radius: var(--radio);
+    font-size: .88rem; text-align: center;
+  }
+  .nav a:hover{ border-color: var(--tinta); background: var(--papel); }
+  .nav a.activo{
+    box-shadow: none;
+    background: var(--tinta); color: #fff; border-color: var(--tinta);
+  }
+
+  /* Los filtros se fijan JUSTO DEBAJO del encabezado, no encima de él.
+     Con top:0 quedaban tapados a medias por la barra superior. */
+  .filtros{ top: 62px; }
+}
+
+@media (max-width: 640px){
+  .rejilla{ grid-template-columns: repeat(2, 1fr); gap:14px; }
+  .tarjeta-cuerpo{ padding:12px 12px 14px; }
+  .tarjeta h3{ font-size:.92rem; }
+  .tarjeta p{ display:none; }
+  .tarjeta-pie{ flex-direction:column; }
+  .tallas-caja{ grid-template-columns:1fr; }
+  .tallas-esquema{ max-width:130px; }
+  .cifras{ gap:24px; }
+  /* En celular las categorías ya están en el menú hamburguesa.
+     Repetirlas aquí duplicaba la navegación y cortaba las pastillas,
+     así que esa fila se oculta y solo queda el filtro por uso. */
+  .filtros{ padding: 9px 0; }
+  .filtros-fila:first-child{ display: none; }
+  .filtros-fila:last-child{ margin-top: 0 !important; flex-wrap: nowrap; }
+  .filtros-grupo{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 1px 20px 2px 0;
+    margin-right: -20px;
+  }
+  .filtros-grupo::-webkit-scrollbar{ display: none; }
+  .filtros-etiqueta{ flex: none; margin-bottom: 0; }
+  .conteo{ display: none; }
+}
+
+@media (max-width: 400px){
+  .rejilla{ grid-template-columns:1fr; }
+}
+
+/* ==========================================================================
+   IMPRESIÓN
+   ========================================================================== */
+@media print{
+  .cabecera, .filtros, .bandeja, .flotante, .franja, .pie, .tarjeta-pie, .acciones-ficha{ display:none !important; }
+  .ficha{ grid-template-columns:1fr 1fr; }
+  body{ font-size:11pt; }
+}
+
+/* ==========================================================================
+   CINTA DE MARCAS CLIENTE
+   Dos filas en sentido contrario, en movimiento continuo.
+   Se detiene al pasar el mouse y respeta "reducir movimiento" del sistema.
+   ========================================================================== */
+.marcas{
+  padding: clamp(38px, 5vw, 56px) 0;
+  background: var(--niebla);
+  border-top: 1px solid var(--linea);
+  overflow: hidden;
+}
+.marcas-cabeza{ text-align:center; margin-bottom: 26px; }
+.marcas-cabeza p{ margin:10px 0 0; color: var(--suave); font-size:.92rem; }
+
+.cinta{
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0;
+  /* Difumina los bordes para que las marcas entren y salgan sin corte seco */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.cinta + .cinta{ margin-top: 4px; }
+
+.cinta-pista{
+  display: flex;
+  width: max-content;
+  animation: correr 58s linear infinite;
+}
+.cinta-inversa .cinta-pista{ animation-direction: reverse; animation-duration: 66s; }
+
+.cinta:hover .cinta-pista,
+.cinta:focus-within .cinta-pista{ animation-play-state: paused; }
+
+@keyframes correr{
+  from{ transform: translate3d(0,0,0); }
+  to  { transform: translate3d(-50%,0,0); }
+}
+
+.marca{
+  flex: 0 0 auto;
+  height: 56px;
+  min-width: 145px;
+  margin: 0 14px;
+  display: grid; place-items: center;
+  padding: 0 18px;
+  border-radius: var(--radio);
+  filter: grayscale(1);
+  opacity: .55;
+  transition: filter .2s ease, opacity .2s ease;
+}
+.marca:hover{ filter: grayscale(0); opacity: 1; }
+
+.marca img{
+  max-height: 58px; width: auto; max-width: 172px;
+  object-fit: contain;
+}
+
+/* Cuando todavía no hay logo, se muestra el nombre */
+.marca-texto{
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--tinta);
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+@media (max-width: 640px){
+  .marca{ height: 62px; min-width: 140px; margin: 0 8px; padding: 0 12px; }
+  .marca img{ max-height: 46px; max-width: 138px; }
+  .marca-texto{ font-size: .9rem; }
+  .cinta-pista{ animation-duration: 40s; }
+  .cinta-inversa .cinta-pista{ animation-duration: 46s; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cinta-pista{ animation: none; }
+  .cinta{
+    overflow-x: auto;
+    -webkit-mask-image: none; mask-image: none;
+  }
+}
+
+
+
+/* ==========================================================================
+   VISOR DE IMAGEN AMPLIADA
+   Se abre al hacer clic en la foto de la ficha. Cierra con Esc,
+   con el botón, o tocando fuera de la imagen.
+   ========================================================================== */
+.visor{
+  position: fixed; inset: 0; z-index: 100;
+  background: #072731;
+  display: none;
+  padding: 20px;
+  opacity: 0; transition: opacity .18s ease;
+}
+.visor.abierto{ display: grid; grid-template-rows: auto 1fr auto; opacity: 1; }
+
+.visor-barra{
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; color: rgba(255,255,255,.7); font-size: .86rem;
+}
+.visor-titulo{ font-weight: 700; color: #fff; }
+
+.visor-cerrar{
+  width: 42px; height: 42px; flex: none;
+  border: 1px solid rgba(255,255,255,.25); border-radius: 50%;
+  background: transparent; color: #fff; cursor: pointer;
+  display: grid; place-items: center; font-size: 1.3rem; line-height: 1;
+}
+.visor-cerrar:hover{ background: rgba(255,255,255,.14); }
+
+.visor-marco{
+  position: relative;
+  display: grid; place-items: center;
+  min-height: 0; padding: 14px 0; overflow: hidden;
+}
+.visor-marco img{
+  /* Se ajusta al alto libre descontando barra superior y miniaturas */
+  max-width: 100%;
+  max-height: calc(100vh - 200px);
+  width: auto; height: auto;
+  object-fit: contain;
+  border-radius: var(--radio);
+}
+
+.visor-flecha{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(0,0,0,.35); color: #fff;
+  display: grid; place-items: center; cursor: pointer;
+}
+.visor-flecha:hover{ background: rgba(255,255,255,.18); }
+.visor-flecha[disabled]{ opacity: .25; cursor: default; }
+.visor-flecha svg{ width: 22px; height: 22px; }
+.visor-izq{ left: 0; } .visor-der{ right: 0; }
+
+.visor-pie{ display: flex; gap: 9px; justify-content: center; }
+.visor-pie button{
+  width: 54px; height: 54px; padding: 0;
+  border: 2px solid transparent; border-radius: var(--radio);
+  background: rgba(255,255,255,.1); overflow: hidden; cursor: pointer;
+}
+.visor-pie button[aria-current="true"]{ border-color: #fff; }
+.visor-pie img{ width: 100%; height: 100%; object-fit: cover; }
+
+/* La foto de la ficha invita a ampliarse */
+.carrusel-pista img{ cursor: zoom-in; }
+
+body.visor-abierto{ overflow: hidden; }
+/* Nada debe competir con la imagen ampliada */
+body.visor-abierto .cabecera,
+body.visor-abierto .flotante,
+body.visor-abierto .bandeja{ display: none; }
+
+@media (max-width: 640px){
+  .visor{ padding: 12px; }
+  .visor-flecha{ width: 40px; height: 40px; }
+  .visor-pie button{ width: 44px; height: 44px; }
+  .visor-marco img{ max-height: calc(100vh - 170px); }
+  .visor-barra{ font-size: .78rem; }
+}
+
+/* ==========================================================================
+   MANIFIESTO — por qué las empresas eligen Serranía
+   ========================================================================== */
+.manifiesto{
+  padding: clamp(52px, 7vw, 88px) 0;
+  background: var(--papel);
+  border-top: 1px solid var(--linea);
+}
+.manifiesto-intro{ max-width: 760px; margin-bottom: clamp(34px, 4vw, 52px); }
+.manifiesto-intro h2{
+  font-size: clamp(1.7rem, 4vw, 2.9rem);
+  color: var(--tinta);
+  max-width: 20ch;
+}
+.manifiesto-intro p{
+  margin: 18px 0 0;
+  font-size: clamp(1rem, 1.6vw, 1.14rem);
+  line-height: 1.65;
+  color: var(--suave);
+  max-width: 62ch;
+}
+.manifiesto-intro strong{ color: var(--texto); font-weight: 700; }
+
+.pilares{
+  display: grid; gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  border-top: 2px solid var(--tinta);
+}
+.pilar{
+  padding: 26px 24px 28px;
+  border-right: 1px solid var(--linea);
+}
+.pilar:first-child{ padding-left: 0; }
+.pilar:last-child{ border-right: 0; padding-right: 0; }
+.pilar h3{
+  font-family: var(--display);
+  font-size: 1.06rem; font-weight: 700;
+  color: var(--tinta); margin: 0 0 10px;
+  line-height: 1.25;
+}
+.pilar p{ margin: 0; font-size: .91rem; color: var(--suave); line-height: 1.6; }
+.pilar-numero{
+  display: block; font-family: var(--display);
+  font-size: .78rem; font-weight: 700; letter-spacing: .14em;
+  color: var(--acento); margin-bottom: 12px;
+}
+
+@media (max-width: 760px){
+  .pilar,
+  .pilar:first-child,
+  .pilar:last-child{
+    padding: 22px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--linea);
+  }
+  .pilar:last-child{ border-bottom: 0; }
+}
+
+/* ==========================================================================
+   CARRUSEL DENTRO DE LA TARJETA
+   En computador avanza al pasar el mouse. En celular se desliza con el dedo.
+   El clic sigue llevando a la ficha del producto.
+   ========================================================================== */
+.tarjeta-pista{
+  display: flex; height: 100%;
+  transition: transform .35s ease;
+}
+.tarjeta-pista > *{ min-width: 100%; height: 100%; }
+.tarjeta-pista img{ width: 100%; height: 100%; object-fit: cover; }
+
+.tarjeta-puntos{
+  position: absolute; left: 0; right: 0; bottom: 9px;
+  display: flex; gap: 5px; justify-content: center;
+  pointer-events: none;
+  opacity: 0; transition: opacity .2s ease;
+}
+.tarjeta-foto:hover .tarjeta-puntos,
+.tarjeta-foto:focus-within .tarjeta-puntos{ opacity: 1; }
+
+.tarjeta-puntos i{
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  box-shadow: 0 0 3px rgba(0,0,0,.4);
+  transition: background .2s ease, width .2s ease;
+}
+.tarjeta-puntos i.activo{ background: #fff; width: 16px; border-radius: 3px; }
+
+/* En pantallas táctiles los puntos se ven siempre: son la pista de que hay más fotos */
+@media (hover: none){
+  .tarjeta-puntos{ opacity: 1; }
+  .tarjeta-pista{ transition: transform .28s ease; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tarjeta-pista{ transition: none; }
+}
+
+/* ==========================================================================
+   REJILLA DE MEDIOS — estampados y empaque
+   Foto con el nombre encima, como en el catálogo impreso.
+   ========================================================================== */
+.medios{
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.medios-dos{ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+
+.medio{
+  position: relative;
+  border-radius: var(--radio-g);
+  overflow: hidden;
+  background: var(--tinta);
+  aspect-ratio: 4/3;
+  display: flex; align-items: flex-end;
+}
+.medios-dos .medio{ aspect-ratio: 3/2; }
+
+.medio img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.medio::after{
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(4,22,28,.94) 0%,
+    rgba(4,22,28,.82) 38%,
+    rgba(4,22,28,.45) 68%,
+    rgba(4,22,28,.12) 100%);
+}
+.medio-texto{
+  position: relative; z-index: 1;
+  padding: 18px 18px 20px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.55);
+}
+.medio-texto strong{
+  display: block;
+  font-family: var(--display);
+  font-size: 1.05rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .01em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.medio-texto span{
+  display: block; font-size: .82rem; line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255,255,255,.92);
+}
+
+/* Cuando aún no hay foto, el bloque se sostiene con el color de marca */
+.medio-sin-foto{
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.045) 0 14px, transparent 14px 28px),
+    var(--tinta);
+}
+
+@media (max-width: 640px){
+  .medios{ grid-template-columns: 1fr 1fr; gap: 10px; }
+  .medios-dos{ grid-template-columns: 1fr; }
+  .medio-texto{ padding: 12px; }
+  .medio-texto strong{ font-size: .95rem; }
+  .medio-texto span{ display: none; }
+  .medios-dos .medio-texto span{ display: block; }
+}
+
+
+/* ==========================================================================
+   FLECHAS EN LA TARJETA
+   Aparecen al pasar el mouse. En celular no salen: ahí se desliza con el dedo.
+   ========================================================================== */
+.tarjeta-flecha{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 30px; height: 30px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.92); color: var(--tinta);
+  display: grid; place-items: center; cursor: pointer;
+  box-shadow: 0 1px 5px rgba(11,58,71,.28);
+  opacity: 0; transition: opacity .18s ease, background .15s ease;
+  z-index: 2;
+}
+.tarjeta-flecha svg{ width: 15px; height: 15px; }
+.tarjeta-flecha:hover{ background: #fff; }
+.tarjeta-foto:hover .tarjeta-flecha,
+.tarjeta-flecha:focus-visible{ opacity: 1; }
+.tarjeta-izq{ left: 8px; } .tarjeta-der{ right: 8px; }
+
+/* Los puntos pasan a ser clicables */
+.tarjeta-puntos{ pointer-events: auto; }
+.tarjeta-puntos button{
+  width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  box-shadow: 0 0 3px rgba(0,0,0,.4);
+  cursor: pointer;
+  transition: background .2s ease, width .2s ease;
+}
+.tarjeta-puntos button.activo{ background: #fff; width: 16px; border-radius: 3px; }
+.tarjeta-puntos button:hover{ background: #fff; }
+
+/* En pantallas táctiles no hay flechas: estorban al deslizar */
+@media (hover: none){
+  .tarjeta-flecha{ display: none; }
+}
+
+/* ==========================================================================
+   CONTROLES DE LA CINTA DE MARCAS
+   Sigue andando sola; los botones permiten pausar y mover a mano.
+   ========================================================================== */
+.cinta-mando{
+  display: flex; gap: 8px; align-items: center; justify-content: center;
+  margin-top: 14px;
+}
+.cinta-mando button{
+  width: 34px; height: 34px; padding: 0;
+  border: 1px solid var(--linea); border-radius: 50%;
+  background: var(--papel); color: var(--tinta);
+  display: grid; place-items: center; cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.cinta-mando button:hover{ background: var(--niebla); border-color: var(--tinta); }
+.cinta-mando svg{ width: 15px; height: 15px; }
+
+/* Sobre el azul del hero */
+
+/* Cuando el visitante toma el control, el bucle deja de correr solo */
+.cinta.a-mano .cinta-pista{ animation-play-state: paused; }
+.cinta.a-mano{ overflow-x: auto; scroll-behavior: smooth; }
+.cinta.a-mano::-webkit-scrollbar{ display: none; }
+.cinta.a-mano{ scrollbar-width: none; }
+
+/* La capa de enlace cubre la foto, por debajo de los controles */
+.tarjeta-enlace{
+  position: absolute; inset: 0; z-index: 1;
+  display: block;
+}
+.tarjeta-foto .marcador{ z-index: 2; }
+.tarjeta-flecha{ z-index: 3; }
+.tarjeta-puntos{ z-index: 3; }
+
+/* ==========================================================================
+   MARCAS A COLOR EN PANTALLAS TÁCTILES
+   En celular no hay mouse, así que el efecto de revelar color nunca ocurría.
+   Ahí los logos se muestran a color desde el principio.
+   ========================================================================== */
+@media (hover: none){
+  /* Banda de la ficha de producto, sobre fondo claro */
+  .marca{ filter: none; opacity: 1; }
+
+  /* Franja del hero, sobre fondo azul: cada logo va sobre una placa blanca
+     para que también se lean los logos oscuros como Sony o Porsche */
+}
+
+/* ==========================================================================
+   GUÍA DE MEDIDAS COMO IMAGEN
+   Reemplaza el dibujo generado por código. Se amplía al tocarla.
+   ========================================================================== */
+.tallas-esquema{
+  margin: 0;
+  background: var(--niebla);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 8px;
+  overflow: hidden;
+}
+.tallas-esquema img{
+  width: 100%; height: auto; display: block;
+  border-radius: 2px;
+}
+.tallas-esquema figcaption{
+  display: none;
+  margin-top: 7px;
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--suave); text-align: center;
+}
+.tallas-esquema.ampliable{ cursor: zoom-in; }
+.tallas-esquema.ampliable figcaption{ display: block; }
+.tallas-esquema.ampliable:hover{ border-color: var(--tinta); }
+
+/* Mientras no exista la imagen */
+.guia-sin-foto{
+  display: grid; place-items: center;
+  aspect-ratio: 3/4;
+  background: repeating-linear-gradient(45deg, #EDF1F2 0 10px, #F5F8F8 10px 20px);
+  color: var(--suave); font-size: .68rem;
+  text-transform: uppercase; letter-spacing: .1em; text-align: center;
+  border-radius: 2px;
+}
+
+/* La columna de la guía necesita algo más de ancho que el dibujo anterior */
+.tallas-caja{ grid-template-columns: 168px 1fr; }
+
+@media (max-width: 640px){
+  .tallas-caja{ grid-template-columns: 1fr; }
+  .tallas-esquema{ max-width: 190px; }
+}
+
+
+/* El "+" al final de la carta de colores */
+.muestra-mas{
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px dashed var(--linea);
+  display: grid; place-items: center;
+  font-size: 1rem; font-weight: 700; color: var(--suave);
+  cursor: help; line-height: 1;
+}
+.muestra-mas:hover{ border-color: var(--tinta); color: var(--tinta); }
+
+/* Párrafo de descripción ampliada en la ficha */
+.ficha-detalle{
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--suave);
+  margin: 0;
+  padding-top: 4px;
+  border-top: 1px solid var(--linea);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+
+
+/* Letra de referencia en los encabezados de la tabla de tallas */
+.letra-medida{
+  display: inline-grid; place-items: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22);
+  font-size: .62rem; font-weight: 800;
+  vertical-align: 1px;
+}
+
+.marcas-pie{ margin: 8px 0 0; color: var(--suave); font-size: .92rem; }
+
+/* ==========================================================================
+   REJILLA DE MARCAS EN LA PORTADA
+   Todas visibles, 5 por fila en computador y en celular.
+   ========================================================================== */
+.marcas-rejilla{
+  padding: clamp(44px, 6vw, 68px) 0;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+}
+.rejilla-marcas{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px 28px;
+}
+/* El logo se amplía hasta llenar su casilla (sin deformarse),
+   así se ve grande aunque el PNG sea pequeño o traiga márgenes */
+.marca-celda{
+  height: 84px;
+  display: grid; place-items: center;
+  transition: opacity .18s ease;
+}
+.marca-celda:hover{ opacity: .6; }
+.marca-celda img{
+  width: 100%; height: 100%;
+  max-width: 200px;
+  object-fit: contain;
+}
+.marca-celda .marca-texto{
+  font-family: var(--display);
+  font-weight: 700; font-size: 1.05rem;
+  color: var(--tinta); text-align: center;
+  line-height: 1.2;
+}
+.marcas-pie{
+  margin: 10px 0 0;
+  font-size: .9rem; color: var(--suave);
+}
+.marcas-rejilla .seccion-cabeza{ margin-bottom: 16px; }
+
+@media (max-width: 640px){
+  .marcas-rejilla{ padding: 30px 0; }
+  .rejilla-marcas{ grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
+  .marca-celda{ height: 62px; }
+  .marca-celda img{ max-width: 110px; }
+  .marca-celda .marca-texto{ font-size: .72rem; }
+  .marcas-pie{ font-size: .8rem; }
+}
+
+
+/* ==========================================================================
+   SECCIÓN DE VIDEO — formato VERTICAL (9:16)
+   Arranca solo y en silencio. El visitante puede pausarlo y activar el sonido.
+   ========================================================================== */
+.video-seccion{
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--niebla);
+}
+.video-caja{
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+}
+.video-marco{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 82vh;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--tinta);
+  box-shadow: 0 18px 40px rgba(11,58,71,.18);
+}
+.video-marco video{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Controles sobre el video */
+.video-mando{
+  position: absolute; right: 12px; bottom: 12px;
+  display: flex; gap: 8px;
+}
+.video-mando button{
+  width: 40px; height: 40px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: rgba(6,26,32,.6);
+  color: #fff;
+  display: grid; place-items: center;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.video-mando button:hover{ background: rgba(6,26,32,.85); }
+.video-mando svg{ width: 17px; height: 17px; }
+
+.video-texto .rotulo{ margin-bottom: 12px; }
+.video-texto h2{ color: var(--tinta); margin-bottom: 16px; }
+.video-texto p{
+  margin: 0 0 24px;
+  font-size: 1rem; line-height: 1.7;
+  color: var(--suave);
+  max-width: 46ch;
+}
+.video-texto .btn{ display: inline-flex; }
+
+@media (max-width: 760px){
+  .video-caja{ grid-template-columns: 1fr; gap: 28px; }
+  .video-marco{ width: min(100%, 290px); max-height: none; }
+  .video-texto{ text-align: center; }
+  .video-texto p{ max-width: none; }
+}
+
+/* ==========================================================================
+   PESOS DE LA TIPOGRAFÍA (Montserrat)
+   800 títulos · 700 palabras clave y botones · 500 apoyos · 400 texto
+   300 párrafos de entrada, los que van grandes bajo un título
+   ========================================================================== */
+.manifiesto-intro p,
+.franja p,
+.video-texto p,
+.ficha-resumen{
+  font-weight: 300;
+  letter-spacing: .005em;
+}
+.manifiesto-intro p strong,
+.franja p strong,
+.video-texto p strong{ font-weight: 700; }
+.franja p strong{ color: #fff; }
+.paso > strong{ font-weight: 700; }
+/* Las palabras clave dentro del párrafo siguen en la misma línea */
+.paso p strong{ display: inline; }
+.faq summary{ font-weight: 600; }
+.btn{ font-weight: 700; letter-spacing: .01em; }
+.nav a{ font-weight: 500; }
+
+/* ==========================================================================
+   ANIMACIONES DE ENTRADA
+   Aparición corta y suave la primera vez que el bloque entra en pantalla.
+   Si el sistema pide menos movimiento, el JS ni siquiera las activa.
+   ========================================================================== */
+.aparece{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s cubic-bezier(.22,.61,.36,1),
+              transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.aparece.visible{ opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce){
+  .aparece{ opacity: 1; transform: none; transition: none; }
+}
+
+/* Movimientos al pasar el mouse: cortos, sin rebotes */
+.tarjeta,
+.medio,
+.pilar,
+.marca-celda{ transition: transform .28s ease, box-shadow .28s ease, opacity .18s ease; }
+.tarjeta:hover{ transform: translateY(-4px); box-shadow: 0 14px 34px rgba(11,58,71,.12); }
+.medio:hover{ transform: translateY(-3px); }
+.medio img{ transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+.medio:hover img{ transform: scale(1.05); }
+.btn{ transition: background .15s ease, color .15s ease, border-color .15s ease,
+                  transform .15s ease, box-shadow .15s ease; }
+.btn:hover{ transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); }
+.pilar:hover{ transform: translateY(-2px); }
+
+/* ==========================================================================
+   TEXTURAS DE FONDO
+   Un grano finísimo y un halo de luz. Dan profundidad sin ensuciar la foto
+   ni robarle protagonismo al producto.
+   ========================================================================== */
+.seccion-niebla,
+.video-seccion,
+.manifiesto{
+  position: relative;
+  isolation: isolate;
+}
+.seccion-niebla::before,
+.video-seccion::before,
+.manifiesto::before{
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .5;
+  background-image:
+    radial-gradient(120% 70% at 50% 0%, rgba(11,58,71,.07) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23r)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+/* Franja de cierre: mismo grano sobre el azul de marca */
+.franja{ position: relative; isolation: isolate; overflow: hidden; }
+.franja::before{
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    radial-gradient(90% 120% at 15% 0%, rgba(255,255,255,.14) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23r)' opacity='.28'/%3E%3C/svg%3E");
+}
+
+/* La franja azul del banner, con el mismo tratamiento */
+.portada-cifras{ position: relative; isolation: isolate; overflow: hidden; }
+.portada-cifras::before{
+  content: "";
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .3;
+  background-image: radial-gradient(70% 140% at 50% 0%, rgba(255,255,255,.16) 0%, transparent 60%);
+}
+
+/* ==========================================================================
+   GUÍA DE TALLAS SIN IMAGEN
+   Cuando la prenda todavía no tiene dibujo de medidas, la tabla ocupa
+   todo el ancho: no queda ningún recuadro vacío.
+   ========================================================================== */
+.tallas-caja-sola{ grid-template-columns: 1fr; }
+
+/* ==========================================================================
+   AJUSTES DE CELULAR
+   Bloques que se desarmaban en pantallas angostas.
+   ========================================================================== */
+/* La tarjeta de estampado tomaba su ancho de la proporción y quedaba a medias,
+   y el texto largo empujaba la rejilla fuera de la pantalla */
+.medio{ width: 100%; min-width: 0; margin: 0; }   /* figure trae margen propio del navegador */
+figure{ margin: 0; }
+.medio-texto{ overflow-wrap: break-word; }
+
+@media (max-width: 640px){
+  .medio{ aspect-ratio: 1 / 1; }
+  .medio-texto{ padding: 10px 11px 12px; }
+  .medio-texto strong{ font-size: .82rem; letter-spacing: 0; }
+
+  /* Pasos y pilares: uno debajo de otro, con una línea que los separa */
+  .pasos{ grid-template-columns: 1fr; gap: 0; }
+  .paso{ padding: 16px 0; border-bottom: 1px solid var(--linea); }
+  .paso:last-child{ border-bottom: 0; }
+  .paso::before{ font-size: 1.15rem; margin-bottom: 4px; }
+
+  .seccion-cabeza{ margin-bottom: 18px; }
+  .seccion-cabeza .btn{ width: 100%; }
+
+  /* Títulos y textos un punto más compactos */
+  h2.display{ font-size: clamp(1.3rem, 6.2vw, 1.7rem); }
+  .manifiesto-intro p{ font-size: .95rem; }
+  .faq summary{ font-size: .95rem; }
+
+  /* Pie de página en una sola columna, sin huecos */
+  .pie-rejilla{ grid-template-columns: 1fr; gap: 22px; }
+  .pie-abajo{ flex-direction: column; gap: 6px; text-align: center; }
+
+  /* El botón flotante de WhatsApp no debe tapar los botones de las tarjetas */
+  .flotante{ bottom: 14px; right: 14px; }
+}
+
+@media (max-width: 420px){
+  .medios{ gap: 8px; }
+  .btn{ padding: 12px 18px; font-size: .88rem; }
+}
+
+/* ==========================================================================
+   SELECTOR DE IDIOMA  (ES / EN en la cabecera)
+   ========================================================================== */
+.idioma{
+  display: inline-grid; place-items: center;
+  min-width: 38px; height: 34px; padding: 0 9px;
+  border: 1px solid var(--linea); border-radius: 100px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+  color: var(--tinta); background: var(--papel);
+  transition: background .15s ease, border-color .15s ease;
+}
+.idioma:hover{ background: var(--niebla); border-color: var(--tinta); }
+
+/* La equivalencia en centimetros, dentro de la tabla de tallas en ingles */
+.tallas .cm{ color: var(--suave); font-size: .82em; white-space: nowrap; }

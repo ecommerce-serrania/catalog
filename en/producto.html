@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corporate apparel | Serrania</title>
+<meta name="description" content="Custom corporate apparel branded with your company logo. From 50 units.">
+<link rel="canonical" href="https://catalogo.serrania.co/en/producto.html">
+
+<meta property="og:type" content="product">
+<meta property="og:title" content="Corporate apparel | Serrania">
+<meta property="og:description" content="Custom corporate apparel branded with your company logo.">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta property="og:locale" content="en_US">
+
+<meta name="theme-color" content="#0B3A47">
+<link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+<a href="#ficha" class="solo-lectores">Skip to content</a>
+
+<!-- ================= CABECERA ================= -->
+<header class="cabecera">
+  <div class="contenedor cabecera-fila">
+    <a class="logo" href="index.html" aria-label="Serrania, home">
+      <img src="../img/logo.png" alt="Serrania" width="150" height="34">
+    </a>
+
+    <div class="buscador">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="buscar" class="solo-lectores">Search for an item</label>
+      <input type="search" id="buscar" placeholder="Search jacket, sweatshirt, cap…" autocomplete="off">
+      <div class="sugerencias oculto" id="sugerencias" role="listbox"></div>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Categories"></nav>
+
+    <div class="acciones">
+      <a class="idioma" href="../producto.html" hreflang="es" aria-label="Ver esta ficha en español">ES</a>
+      <button type="button" class="btn-icono btn-menu" id="btn-menu" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MIGAS ================= -->
+<div class="contenedor">
+  <nav class="migas" aria-label="Breadcrumb">
+    <a href="index.html">Catalog</a><span>/</span>
+    <a href="#" id="miga-categoria"></a><span>/</span>
+    <span id="miga-producto"></span>
+  </nav>
+</div>
+
+<!-- ================= FICHA ================= -->
+<main class="contenedor">
+  <div class="ficha" id="ficha">
+
+    <!-- Carrusel -->
+    <div class="carrusel">
+      <div class="carrusel-marco">
+        <div class="carrusel-pista" id="carrusel-pista"></div>
+        <button type="button" class="carrusel-flecha flecha-izq" id="flecha-izq" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <button type="button" class="carrusel-flecha flecha-der" id="flecha-der" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="carrusel-puntos" id="carrusel-puntos"></div>
+      <div class="miniaturas" id="miniaturas"></div>
+    </div>
+
+    <!-- Información -->
+    <div class="ficha-info">
+      <p class="rotulo" id="categoria"></p>
+      <h1 class="display" id="nombre"></h1>
+      <p class="ficha-resumen" id="resumen"></p>
+
+      <ul class="claves" id="claves"></ul>
+      <p class="ficha-detalle" id="detalle"></p>
+
+      <div class="acciones-ficha" id="acciones-ficha"></div>
+
+      <div class="bloque" id="bloque-colores"></div>
+      <div class="bloque" id="bloque-tallas"></div>
+      <div class="bloque" id="bloque-tecnicas"></div>
+      <div class="bloque" id="bloque-datos"></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= RELACIONADOS ================= -->
+<section class="seccion seccion-niebla" id="relacionados">
+  <div class="contenedor">
+    <div class="seccion-cabeza">
+      <h2 class="display">More in this category</h2>
+      <a class="btn btn-linea btn-chico" href="index.html">See the full catalog</a>
+    </div>
+    <div class="rejilla" id="rejilla-relacionados"></div>
+  </div>
+</section>
+
+<!-- ================= MARCAS CLIENTE ================= -->
+<section class="marcas" id="marcas" aria-label="Brands that have trusted Serrania"></section>
+
+<!-- ================= CIERRE ================= -->
+<section class="franja">
+  <div class="contenedor">
+    <h2 class="display">Need a quote?</h2>
+    <p>Tell us the item, the quantity and send us your logo. We reply with pricing, lead times and a digital mockup.</p>
+    <a class="btn btn-primario" id="wa-cierre" href="#" target="_blank" rel="noopener">Talk to a consultant</a>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-rejilla">
+      <div>
+        <h4>Serrania</h4>
+        <p style="margin:0">Custom corporate apparel. Our own factory in Cajica, Colombia.</p>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="index.html?categoria=chaquetas">Jackets</a></li>
+          <li><a href="index.html?categoria=buzos">Sweatshirts</a></li>
+          <li><a href="index.html?categoria=camisetas">T-shirts &amp; polos</a></li>
+          <li><a href="index.html?categoria=accesorios">Accessories</a></li>
+          <li><a href="index.html?categoria=maletas">Backpacks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="wa-pie" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a id="correo-pie" href="#">Email</a></li>
+          <li><a href="https://serrania.co" target="_blank" rel="noopener">serrania.co</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-abajo">
+      <span>© <span id="ano"></span> Serrania. All rights reserved.</span>
+      <span>Cajica and Bogota, Colombia</span>
+    </div>
+  </div>
+</footer>
+
+<div class="bandeja" id="bandeja" aria-live="polite"></div>
+<a class="flotante" id="wa-flotante" href="#" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.2-1.3c1.4.8 3 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.9-1.3-4.5C3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.2 12 20.2z"/></svg>
+</a>
+
+<script src="js/config.js"></script>
+<script src="js/datos-colores.js"></script>
+<script src="js/datos-tallas.js"></script>
+<script src="js/datos-productos.js"></script>
+<script src="js/datos-marcas.js"></script>
+<script src="js/comunes.js"></script>
+<script src="js/producto.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("ano").textContent = new Date().getFullYear();
+    montarMarcas();
+    ["wa-cierre","wa-pie"].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.href = waGeneral();
+    });
+    var c = document.getElementById("correo-pie");
+    if (c){ c.href = "mailto:" + CONFIG.correo; c.textContent = CONFIG.correo; }
+  });
+</script>
+</body>
+</html>
